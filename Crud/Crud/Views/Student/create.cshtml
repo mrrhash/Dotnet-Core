@@ -1,0 +1,71 @@
+﻿@model Crud.Models.Students
+
+@{
+    ViewData["Title"] = "create";
+}
+
+<h1>create</h1>
+
+<h4>Students</h4>
+<hr />
+
+    
+        <form asp-action="AddStudent">
+            <div class="row">
+            <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+           
+            <div class="form-group">
+                 <input type="hidden" asp-for="id" />
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="mobile" class="control-label"></label>
+                <input asp-for="mobile" class="form-control" />
+                <span asp-validation-for="mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="col-md-6">
+             <div class="form-group">
+                <label asp-for="batch" class="control-label"></label >
+                <select asp-for="batch_id" asp-items="@(new SelectList(ViewBag.batch,"id","batch"))" class="form-control" >
+                    <option value="">please select</option>
+                </select>
+                 <span asp-validation-for="batch_id" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="faculty" class="control-label"></label >
+                <select asp-for="faculty_id" asp-items="@(new SelectList(ViewBag.faculty,"id","faculty"))" class="form-control" >
+                         <option value="">please select</option>
+                </select>
+                 <span asp-validation-for="faculty_id" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                 <a asp-action="StudentList" class="btn btn-success">Back to List</a>
+            </div>
+             </div>
+                
+</div>
+
+        </form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

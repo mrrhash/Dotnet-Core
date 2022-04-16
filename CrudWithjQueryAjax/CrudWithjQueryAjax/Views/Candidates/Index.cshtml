@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CrudWithjQueryAjax.Models.Candidate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Blood Donate Candidates</h1>
+
+<p>
+    <a class="btn btn-success" onclick="showInPopup('@Url.Action("AddOrEdit","Candidates",null,Context.Request.Scheme)','Add Candidate')">Create New</a>
+</p>
+
+<div class="col-md-12 col-sm-12" id="view-all">
+    @await Html.PartialAsync("_ViewAll",Model)
+</div>
+
